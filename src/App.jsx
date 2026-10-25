@@ -18,8 +18,6 @@ import {
 } from "./data.js";
 
 export default function App() {
-  // "after" = redesign (search pinned), "before" = original (search scrolls away)
-  const [variant, setVariant] = useState("after");
   const [chatOpen, setChatOpen] = useState(false);
   const [chatStarted, setChatStarted] = useState(false);
   const [followUps, setFollowUps] = useState([]);
@@ -39,26 +37,12 @@ export default function App() {
 
   return (
     <div className="stage">
-      {/* Design-review controls — sit outside the phone */}
-      <div className="stage__controls" role="group" aria-label="Compare versions">
-        {["before", "after"].map((v) => (
-          <button
-            key={v}
-            type="button"
-            className={`toggle toggle--${v}${variant === v ? " is-active" : ""}`}
-            onClick={() => setVariant(v)}
-          >
-            {v === "before" ? "Before — search scrolls away" : "After — search stays pinned"}
-          </button>
-        ))}
-      </div>
-
       <div className="phone">
         <StatusBar />
 
         {/* Home stays mounted while chat is open so its scroll position is kept */}
         <main className="screen" hidden={chatOpen}>
-          <SearchHeader sticky={variant === "after"} />
+          <SearchHeader />
           <div className="screen__content">
             <HeroCarousel slides={SLIDES} />
             <RecentlyViewed items={RECENTLY_VIEWED} />

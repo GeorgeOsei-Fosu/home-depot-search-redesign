@@ -54,36 +54,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
   padding: 24px 16px;
-}
-
-.stage__controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-}
-
-.toggle {
-  border: 1px solid var(--border);
-  background: white;
-  border-radius: 999px;
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.toggle--before.is-active {
-  background: #b3261e;
-  border-color: #b3261e;
-  color: white;
-}
-
-.toggle--after.is-active {
-  background: #2e7d32;
-  border-color: #2e7d32;
-  color: white;
 }
 
 /* ─── Phone frame ─────────────────────────────────────────────────── */
@@ -104,20 +75,7 @@ img {
   .stage {
     height: 100dvh;
     padding: 0;
-    gap: 0;
     justify-content: flex-start;
-  }
-
-  .stage__controls {
-    width: 100%;
-    padding: 8px;
-    background: white;
-    border-bottom: 1px solid var(--border-soft);
-  }
-
-  .toggle {
-    padding: 6px 10px;
-    font-size: 11px;
   }
 
   .phone {
@@ -171,13 +129,9 @@ img {
   padding: 10px 14px;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  z-index: 10;
-}
-
-/* The redesign: header stays pinned while the page scrolls */
-.search-header--sticky {
   position: sticky;
   top: 0;
+  z-index: 10;
 }
 
 .search-field {
