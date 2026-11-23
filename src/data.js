@@ -119,3 +119,119 @@ export const CHAT = {
     { name: "Plumber's Tape", price: "$3.48" },
   ],
 };
+
+// ─── Services (redesign: all four open inside the app) ─────────────
+// `icon` names refer to components/Icon.jsx
+export const SERVICES = [
+  { id: "rental", name: "Truck & Tool Rental", blurb: "Reserve online, pick up in store", icon: "truck" },
+  { id: "installation", name: "Installation Services", blurb: "Book a free measure or consultation", icon: "wrench" },
+  { id: "calculators", name: "Project Calculators", blurb: "Estimate materials and cost", icon: "calculator" },
+  { id: "workshops", name: "Digital Workshops", blurb: "Free how-to videos", icon: "play" },
+];
+
+export const RENTALS = {
+  Trucks: [
+    { name: "Load 'N Go Pickup Truck", price: "$19 / 75 min", note: "Available today" },
+    { name: "Cargo Van", price: "$29 / 75 min", note: "Available today" },
+    { name: "Flatbed Truck", price: "$39 / 75 min", note: "Available tomorrow" },
+  ],
+  Tools: [
+    { name: "Log Splitter", price: "$89 / day", note: "Available today" },
+    { name: "Pressure Washer", price: "$59 / day", note: "Available today" },
+    { name: "Tile Saw", price: "$49 / day", note: "2 left" },
+    { name: "Carpet Cleaner", price: "$39 / day", note: "Available today" },
+    { name: "Concrete Mixer", price: "$65 / day", note: "Available tomorrow" },
+  ],
+};
+
+// Each calculator turns a few measurements into a quantity + estimate.
+export const CALCULATORS = [
+  {
+    id: "paint",
+    name: "Paint",
+    icon: iconPaint,
+    fields: [
+      { key: "length", label: "Room length (ft)", value: 12 },
+      { key: "width", label: "Room width (ft)", value: 10 },
+      { key: "height", label: "Wall height (ft)", value: 8 },
+      { key: "coats", label: "Coats", value: 2 },
+    ],
+    // ~350 sq ft per gallon
+    calc: ({ length, width, height, coats }) => Math.ceil((2 * (length + width) * height * coats) / 350),
+    unit: "gallon",
+    product: "Interior Paint & Primer, 1 gal",
+    unitPrice: 38.98,
+  },
+  {
+    id: "mulch",
+    name: "Mulch & Soil",
+    icon: iconLawn,
+    fields: [
+      { key: "length", label: "Bed length (ft)", value: 20 },
+      { key: "width", label: "Bed width (ft)", value: 4 },
+      { key: "depth", label: "Depth (in)", value: 3 },
+    ],
+    // 2 cu ft bags
+    calc: ({ length, width, depth }) => Math.ceil((length * width * (depth / 12)) / 2),
+    unit: "bag",
+    product: "Brown Mulch, 2 cu ft bag",
+    unitPrice: 3.97,
+  },
+  {
+    id: "flooring",
+    name: "Flooring",
+    icon: iconFlooring,
+    fields: [
+      { key: "length", label: "Room length (ft)", value: 12 },
+      { key: "width", label: "Room width (ft)", value: 10 },
+    ],
+    // 20 sq ft per box, +10% for cuts
+    calc: ({ length, width }) => Math.ceil((length * width * 1.1) / 20),
+    unit: "box",
+    product: "Laminate Flooring, 20 sq ft box",
+    unitPrice: 42.5,
+  },
+  {
+    id: "concrete",
+    name: "Concrete",
+    icon: iconBuilding,
+    fields: [
+      { key: "length", label: "Slab length (ft)", value: 10 },
+      { key: "width", label: "Slab width (ft)", value: 10 },
+      { key: "depth", label: "Thickness (in)", value: 4 },
+    ],
+    // 80 lb bag ≈ 0.6 cu ft
+    calc: ({ length, width, depth }) => Math.ceil((length * width * (depth / 12)) / 0.6),
+    unit: "bag",
+    product: "Concrete Mix, 80 lb bag",
+    unitPrice: 6.48,
+  },
+];
+
+// Categories from the homedepot.com installation page, with Figma icons
+export const INSTALLATION = [
+  { name: "Flooring", icon: iconFlooring },
+  { name: "Bathroom", icon: iconBath },
+  { name: "Kitchen", icon: iconKitchen },
+  { name: "Windows & Doors", icon: iconBuilding },
+  { name: "Heating & Cooling", icon: iconElectrical },
+  { name: "Water Heaters", icon: iconPlumbing },
+  { name: "Window Treatments", icon: iconDecor },
+  { name: "Exterior Home", icon: iconOutdoor },
+  { name: "Storage Solutions", icon: iconStorage },
+  { name: "Electrical & Lighting", icon: iconLighting },
+  { name: "Carpentry & Masonry", icon: iconTools },
+  { name: "Painting & Patching", icon: iconPaint },
+  { name: "Appliances", icon: iconAppliances },
+  { name: "Landscaping", icon: iconLawn },
+  { name: "Assembly & Mounting", icon: iconHardware },
+];
+
+export const WORKSHOPS = [
+  { title: "Fix a Dripping Faucet", length: "6 min", level: "Beginner" },
+  { title: "Paint a Room Like a Pro", length: "9 min", level: "Beginner" },
+  { title: "Install Laminate Flooring", length: "12 min", level: "Intermediate" },
+  { title: "Build a Raised Garden Bed", length: "15 min", level: "Beginner" },
+  { title: "Install a Smart Thermostat", length: "8 min", level: "Intermediate" },
+  { title: "Patch a Hole in Drywall", length: "7 min", level: "Beginner" },
+];
